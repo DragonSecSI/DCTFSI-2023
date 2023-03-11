@@ -1,0 +1,25 @@
+name: "Web 101"
+author: "medic"
+category: "Web"
+
+description: |
+  PHP is used by 77.5% of all the websites whose server-side programming language we know.
+  But why?!?! 
+connection_info: "web-101.dctf.si"
+
+value: 200
+type: "dynamic"
+extra:
+  initial: 200
+  decay: 10
+  minimum: 20
+
+files:
+flags:
+  - "DCTF{c4r3fu1_w1th_c0mm3nts_33e9c9d80ed}"
+tags:
+  - "web"
+  - "baby"
+
+state: "visible"
+version: "1.0"

@@ -1,0 +1,25 @@
+name: "Team Thread Racing"
+author: "VrumVrum"
+category: "PWN"
+
+description: |
+  Cooperate with your teammate or you will lose!
+connection_info: nc pwn.dctf.si 13376
+
+value: 200
+type: "dynamic"
+extra:
+  initial: 200
+  decay: 10
+  minimum: 20
+
+files:
+  - "chall/app"
+flags:
+  - "DCTF{ButCanYouWinAgain?}"
+tags:
+  - "pwn"
+  - "medium"
+
+state: "visible"
+version: "0.1"

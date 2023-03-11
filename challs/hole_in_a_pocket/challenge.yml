@@ -1,0 +1,24 @@
+name: "Hole in a pocket"
+author: "SnackOverflow"
+category: "Misc"
+
+description: |
+  My company's finances took a wild ride in the last quarter, I wonder where all the money is hiding!
+
+value: 200
+type: "dynamic"
+extra:
+  initial: 200
+  decay: 10
+  minimum: 20
+
+files:
+  - "chall/Q1_finances.xlsx"
+flags:
+  - "DCTF{n07_R34Lly_h1dD3n}"
+tags:
+  - "misc"
+  - "easy"
+
+state: "visible"
+version: "0.1"

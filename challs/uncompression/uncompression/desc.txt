@@ -1,0 +1,6 @@
+title: Uncompression
+desc: I tried to solve my homework using ChatGPT, but I don't even know what binary files are... Please recover what I tried to compress!
+files for competitors: "compress" (binary), "output.txt".
+Does not require any docker or anything else.
+diff: ezpz
+flag: DCTF{th3_pr0f_wiLL_b3_h3aring_ab0ut_th1s}

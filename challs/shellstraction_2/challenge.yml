@@ -1,0 +1,28 @@
+name: "Shellstraction 2"
+author: "AlwaysGuilty"
+category: "PWN"
+
+description: |
+  The oposite of inception is extraction.
+connection_info: nc pwn.dctf.si 13373
+
+value: 200
+type: "dynamic"
+extra:
+  initial: 200
+  decay: 10
+  minimum: 20
+
+files:
+  - "chall/app.c"
+  - "chall/app"
+  - "Dockerfile"
+  - "handle_conn.py"
+flags:
+  - "DCTF{D035_4nyb0dy_l1st3n_T0_Ur14h_He4p_013gh1h1304h0139}"
+tags:
+  - "pwn"
+  - "hard"
+
+state: "visible"
+version: "0.1"

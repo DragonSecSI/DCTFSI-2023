@@ -1,0 +1,25 @@
+name: "Crypto Template"
+author: "DragonSec SI"
+category: "Crypto"
+
+description: |
+  Multiline
+  description.
+
+value: 500
+type: "dynamic"
+extra:
+  initial: 500
+  decay: 50
+  minimum: 50
+
+files:
+  - "chall/ciphertext.txt"
+flags:
+  - "DCTF{template}"
+tags:
+  - "crypto"
+  - "hard"
+
+state: "visible"
+version: "0.1"

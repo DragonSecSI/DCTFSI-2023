@@ -1,0 +1,24 @@
+name: "A Timely Manner"
+author: "medic"
+category: "Web"
+
+description: |
+  I don't get it. Does this website think I can see in the future?
+connection_info: "tmnt.dctf.si"
+
+value: 200
+type: "dynamic"
+extra:
+  initial: 200
+  decay: 10
+  minimum: 20
+
+files:
+flags:
+  - "DCTF{1t5_4ll_4b0ut_7h3_p53udo_r4nd0m_numb3r5_424e7f9234}"
+tags:
+  - "web"
+  - "easy"
+
+state: "visible"
+version: "1.0"

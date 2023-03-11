@@ -1,0 +1,24 @@
+name: "Baby rev"
+author: "Riggle"
+category: "Rev"
+
+description: "*yawn*"
+
+value: 200
+type: "dynamic"
+extra:
+  initial: 200
+  decay: 10
+  minimum: 20
+
+files:
+  - "./baby_rev.tar.gz"
+
+flags:
+  - "DCTF{g00d_job_YoU_g0t_tHE_BABY_rev_49ef85}"
+
+tags:
+  - "rev"
+  - "baby"
+
+state: "visible"

@@ -1,0 +1,26 @@
+name: "Web template"
+author: "DragonSec SI"
+category: "Web"
+
+description: |
+  Multiline
+  description
+connection_info: https://template.web.dctf.si
+
+value: 500
+type: "dynamic"
+extra:
+  initial: 500
+  decay: 50
+  minimum: 50
+
+files:
+  - "shopping_list.zip"
+flags:
+  - "DCTF{template}"
+tags:
+  - "web"
+  - "easy"
+
+state: "visible"
+version: "1.0"

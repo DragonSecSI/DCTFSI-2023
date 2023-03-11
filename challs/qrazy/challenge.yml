@@ -1,0 +1,24 @@
+name: "QRazy"
+author: "Pixel"
+category: "Forensics"
+
+description: |
+  Something seems to be wrong with this QR code...
+
+value: 200
+type: "dynamic"
+extra:
+  initial: 200
+  decay: 10
+  minimum: 20
+
+files:
+  - "chall/qr.png"
+flags:
+  - "DCTF{5p1r4ling_0u7_0f_QRtr0l}"
+tags:
+  - "forensics"
+  - "easy"
+
+state: "visible"
+version: "0.1"

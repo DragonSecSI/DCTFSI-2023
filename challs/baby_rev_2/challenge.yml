@@ -1,0 +1,24 @@
+name: "Babyless rev"
+author: "Riggle"
+category: "Rev"
+
+description: "No more yawning"
+
+value: 200
+type: "dynamic"
+extra:
+  initial: 200
+  decay: 10
+  minimum: 20
+
+files:
+  - "./baby_rev_2.tar.gz"
+
+flags:
+  - "DCTF{v3rY_cOOl_she11c0de_APP_8dc31a}"
+
+tags:
+  - "rev"
+  - "medium"
+
+state: "visible"

@@ -1,0 +1,25 @@
+name: "Juri Muri"
+author: "SnackOverflow"
+category: "Misc"
+
+description: |
+  I have heard someone known as @juri_muri78277 is looking for his friend to share confidential information with.
+  Do you think you can fool into believing you are his friend?
+
+value: 200
+type: "dynamic"
+extra:
+  initial: 200
+  decay: 10
+  minimum: 20
+
+files:
+flags:
+  - "DCTF{b3_c4R3fuL_w17h_s3cUr1ty_qu35710n5}"
+tags:
+  - "misc"
+  - "medium"
+  - "osint"
+
+state: "visible"
+version: "0.1"

@@ -1,0 +1,25 @@
+name: "Amazeing"
+author: "zen"
+category: "Rev"
+
+description: |
+  Professor Slivnik has punished Zen by locking him in a maze that not even ChatGPT can solve. Please, don't save him.
+connection_info: nc pwn.dctf.si 13375
+
+value: 200
+type: "dynamic"
+extra:
+  initial: 200
+  decay: 10
+  minimum: 20
+
+files:
+  - "chall/app"
+flags:
+  - "DCTF{ch4tGPT_do3snt_kn0w_ASCII}"
+tags:
+  - "rev"
+  - "hard"
+
+state: "visible"
+version: "0.1"

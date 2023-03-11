@@ -1,0 +1,25 @@
+name: "Taiwanese exchange"
+author: "pusti"
+category: "Crypto"
+
+description: |
+  The Taiwanese exchange student has been talking to some shady people and we sniffed through their communications. Take a look if there's anything interesting in there.
+
+value: 200
+type: "dynamic"
+extra:
+  initial: 200
+  decay: 10
+  minimum: 20
+
+files:
+  - "chall/chall.py"
+  - "chall/output.txt"
+flags:
+  - "DCTF{sM00tH_0rD3r_r3qU1R3s_P0hl1G_H3LLm4n}"
+tags:
+  - "crypto"
+  - "hard"
+
+state: "visible"
+version: "0.1"

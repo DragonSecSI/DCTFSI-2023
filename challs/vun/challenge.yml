@@ -1,0 +1,26 @@
+name: "Vun"
+author: "Omega"
+category: "PWN"
+
+description: |
+  Sometimes all we need is a bit o VUN.
+
+connection_info: nc pwn.dctf.si 13370
+
+value: 200
+type: "dynamic"
+extra:
+  initial: 200
+  decay: 10
+  minimum: 20
+
+files:
+  - "chall/app"
+flags:
+  - "DCTF{Y0u_4r3_TH3_Tru3_D3C3ND4Nt_0F_vuN}"
+tags:
+  - "pwn"
+  - "easy"
+
+state: "visible"
+version: "0.1"

@@ -1,0 +1,26 @@
+name: "Singing RSA"
+author: "medic"
+category: "Crypto"
+
+description: |
+  I guess this app was made only for Marko.
+connection_info: nc pwn.dctf.si 13374
+
+value: 200
+type: "dynamic"
+extra:
+  initial: 200
+  decay: 10
+  minimum: 20
+
+files:
+  - "challenge.tar.gz"
+flags:
+  - "DCTF{r54_g0e5_l4l4l4_fa44d37}"
+
+tags:
+  - "crypto"
+  - "easy"
+
+state: "visible"
+version: "1.0"

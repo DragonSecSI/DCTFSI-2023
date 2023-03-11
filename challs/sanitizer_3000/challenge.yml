@@ -1,0 +1,25 @@
+name: "Sanitizer 3000"
+author: "TheLuka"
+category: "Web"
+
+description: |
+  Secure your web application with our new Sanitizer 3000!
+connection_info: "sanitizer3000.dctf.si"
+  
+value: 200
+type: "dynamic"
+extra:
+  initial: 200
+  decay: 10
+  minimum: 20
+
+files:
+  - "challenge.tar.gz"
+flags:
+  - "DCTF{cR0sS_s1t3_5cr1pt1nG_m4St3R}"
+tags:
+  - "web"
+  - "medium"
+
+state: "visible"
+version: "0.1"

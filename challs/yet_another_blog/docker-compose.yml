@@ -1,0 +1,41 @@
+version: '3.3'
+
+services:
+  blog:
+    image: yet-another-blog/application
+    build:
+      context: ./app/
+      args:
+        - FLAG=DCTF{test_flag}
+        - HOST=0.0.0.0
+    networks:
+      - internal
+    ports:
+      - 3000
+    env_file: .env
+    volumes:
+      - ./certs/certbot/letsencrypt/live/a.test.si:/secrets:ro
+
+  proxy:
+    image: yet-another-blog/reverse-proxy
+    build:
+      context: ./proxy/
+      dockerfile: Dockerfile
+      args:
+        # Just HTTPS stuff :)
+        - FQDN=a.test.si
+    restart: on-failure
+    volumes:
+      - ./certs/certbot/letsencrypt:/etc/letsencrypt
+      - ./certs/certbot/www:/var/www/certbot
+
+    networks:
+      - external
+      - internal
+    ports:
+      - 80:80
+      - 443:443
+
+networks:
+  external:
+  internal:

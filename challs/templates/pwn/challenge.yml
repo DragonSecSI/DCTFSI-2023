@@ -1,0 +1,26 @@
+name: "PWN Template"
+author: "DragonSec SI"
+category: "PWN"
+
+description: |
+  Multiline
+  description.
+connection_info: nc pwn.dctf.si 1337
+
+value: 500
+type: "dynamic"
+extra:
+  initial: 500
+  decay: 50
+  minimum: 50
+
+files:
+  - "chall/app"
+flags:
+  - "DCTF{template}"
+tags:
+  - "pwn"
+  - "hard"
+
+state: "visible"
+version: "0.1"

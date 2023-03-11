@@ -1,0 +1,25 @@
+name: "Uncompression"
+author: "zen"
+category: "Rev"
+
+description: |
+  I tried to solve my homework using ChatGPT, but I don't even know what binary files are... Please recover what I tried to compress! 
+
+value: 200
+type: "dynamic"
+extra:
+  initial: 200
+  decay: 10
+  minimum: 20
+
+files:
+  - "uncompression/compress"
+  - "uncompression/output.txt"
+flags:
+  - "DCTF{th3_pr0f_wiLL_b3_h3aring_ab0ut_th1s}"
+tags:
+  - "rev"
+  - "easy"
+
+state: "visible"
+version: "0.1"

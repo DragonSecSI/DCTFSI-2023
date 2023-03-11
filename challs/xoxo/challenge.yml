@@ -1,0 +1,25 @@
+name: "XOXO"
+author: "SnackOverflow"
+category: "Misc"
+
+description: |
+  I challenge you to a game of tic-tac-toe! May the best man win!
+connection_info: nc pwn.dctf.si 13372
+
+value: 200
+type: "dynamic"
+extra:
+  initial: 200
+  decay: 10
+  minimum: 20
+
+files:
+  - "chall/xoxo.py"
+flags:
+  - "DCTF{3v4l_c4n_b3_d4n63r0u5}"
+tags:
+  - "misc"
+  - "medium"
+
+state: "visible"
+version: "0.1"

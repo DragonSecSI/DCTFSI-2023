@@ -1,0 +1,26 @@
+name: "Yet another blog"
+author: "medic"
+category: "Web"
+
+description: |
+  It kinda reminds me of wordpress.
+connection_info: "blog.dctf.si"
+
+value: 200
+type: "dynamic"
+extra:
+  initial: 200
+  decay: 10
+  minimum: 20
+
+files:
+  - "challenge.tar.gz"
+flags:
+  - "DCTF{ju5t_upgr4d3_j50nw3b70k3n_t0_m0r3_th4n_8.5.1_9a042926a}"
+
+tags:
+  - "web"
+  - "hard"
+
+state: "visible"
+version: "1.0"

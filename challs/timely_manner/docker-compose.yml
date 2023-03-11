@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+  timely-manner:
+    image: timely-manner
+    build:
+      context: ./app/
+      dockerfile: Dockerfile
+      args:
+        - FLAG=${FLAG:?FLAG is not set}
+        - REDIRECT_URL=${REDIRECT_URL:?REDIRECT_URL is not set}
+    ports:
+      - "80:80"
+    restart: always
+    env_file:
+      - .env
