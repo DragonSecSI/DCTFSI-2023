@@ -1,0 +1,6 @@
+Dockerfile
+venv
+.env
+sol*.py
+__pycache__
+.gitignore

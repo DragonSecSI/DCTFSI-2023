@@ -1,0 +1,26 @@
+name: "Singing RSA"
+author: "medic"
+category: "Crypto"
+
+description: |
+  I guess this app was made only for Marko.
+connection_info: "{{ config.ctf_host }}"
+# TODO: scoring and flag
+value: 500
+type: "dynamic"
+extra:
+  initial: 500
+  decay: 50
+  minimum: 50
+
+files:
+  - "challenge.tar.gz"
+flags:
+  - "dctf{tmp}"
+
+tags:
+  - "web"
+  - "easy"
+
+state: "visible"
+version: "1.0"
