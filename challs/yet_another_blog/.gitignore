@@ -1,0 +1,10 @@
+.env
+
+certs/*
+!certs/.gitkeep
+
+handout.zip
+
+TODO*
+
+challenge.tar.gz
