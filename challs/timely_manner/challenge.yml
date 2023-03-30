@@ -1,0 +1,24 @@
+name: "A Timely Manner"
+author: "medic"
+category: "Web"
+
+description: |
+  I don't get it. Does this website think I can see in the future?
+connection_info: "{{ config.ctf_host }}"
+# TODO: scoring and flag
+value: 500
+type: "dynamic"
+extra:
+  initial: 500
+  decay: 50
+  minimum: 50
+
+files:
+flags:
+  - "dctf{1t5_4ll_4b0ut_7h3_p53udo_r4nd0m_numb3r5_424e7f9234}"
+tags:
+  - "web"
+  - "easy"
+
+state: "visible"
+version: "1.0"
