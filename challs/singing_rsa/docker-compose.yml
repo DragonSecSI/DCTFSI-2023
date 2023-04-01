@@ -3,6 +3,13 @@ services:
   app:
     image: 'rsa-signer'
     build:
-      context: .
+      context: ./app
       dockerfile: Dockerfile
       args:
+        - FLAG:${FLAG:?FLAG is not set}
+    env_file:
+      - .env
+    volumes:
+      - ./app:/app:ro
+    ports:
+      - 1337:1337 
