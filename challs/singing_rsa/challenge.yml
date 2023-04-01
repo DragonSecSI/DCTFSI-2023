@@ -5,7 +5,8 @@ category: "Crypto"
 description: |
   I guess this app was made only for Marko.
 connection_info: "{{ config.ctf_host }}"
-# TODO: scoring and flag
+
+# TODO: scoring
 value: 500
 type: "dynamic"
 extra:
@@ -16,7 +17,8 @@ extra:
 files:
   - "challenge.tar.gz"
 flags:
-  - "dctf{tmp}"
+  # rsa goes lalalala
+  - "dctf{r54_g0e5_l4l4l4_fa44d37}"
 
 tags:
   - "web"
