@@ -6,7 +6,7 @@
  Get public key from certificate of https, and use it with `alg: HS256` header to inject yourself to becoma admin user.
 
 ## Running
- - Copy .env.preview to .env and fill in the values
+ - Copy .env.example to .env and fill in the values
  - Populate certs/ with the `cert.pem` and `key.pem`
  - Run `docker-compose up -d`
 
