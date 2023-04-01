@@ -3,7 +3,7 @@
 # This script is used to generate the handout for the challenge.
 # It is run from the root of the challenge directory.
 
-FILES="app/ proxy/ docker-compose.yml .env.example"
+FILES="app/ docker-compose.yml .env.example"
 
 # Create a temporary directory
 TMPDIR=$(mktemp -d)
