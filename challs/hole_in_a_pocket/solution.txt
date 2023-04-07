@@ -1,0 +1,11 @@
+The given excel file contains a password protected worksheet. (And I forgot the passphrase, hehe. We won't need it anyway.)
+Our first step is to bypass the password as we cannot do anything. I suggest saving the file as Excel 97-2003. 
+The new file allows us to simply remove the protection without entering any password.
+All we can see is some random data so we can search for a character that appears only in the flag, ex. '{'. 
+The flag is located in a hidden row. It is spread through multiple fields in white text, we can change its color or just copy it:
+D	C	T	F	{	n	0	7	_	R	3	4	L	l	y	_	h	1	d	D	3	n	}
+
+Today we learned that Excel's worksheet protection mechanism is quite useless.
+
+P.S. I use Excel version:
+Microsoft® Excel® for Microsoft 365 MSO (version 2302 build 16.0.16130.20298) 32-bit 
