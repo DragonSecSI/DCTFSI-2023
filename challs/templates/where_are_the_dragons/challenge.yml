@@ -1,0 +1,24 @@
+name: "Where are the dragons?"
+author: "spanskiduh"
+category: "Forensics"
+
+description: |
+  Hmm... its all about the image channels:)
+
+value: 500 
+type: "dynamic"
+extra:
+  initial: 500 
+  decay: 50 
+  minimum: 50 
+
+files:
+  - "chall/DragonSec_logo_h.png"
+flags:
+  - "DCTF{n0t_so_3@sy_aft3r_@ll}"
+tags:
+  - "forensics"
+  - "hard"
+
+state: "visible"
+version: "0.1"
