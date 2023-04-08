@@ -1,0 +1,24 @@
+name: "Evil pdf"
+author: "spanskiduh"
+category: "Forensics"
+
+description: |
+  This pdf was sent to us, but we don't know the password.
+  Can you help us guess it?
+value: 500 
+type: "dynamic"
+extra:
+  initial: 100
+  decay: 10 
+  minimum: 50 
+
+files:
+  - "./chall/evil_doc_enc.pdf"
+flags:
+  - "DCTF{pdfs_are_easy_to_crack}"
+tags:
+  - "forensics"
+  - "hard"
+
+state: "visible"
+version: "0.1"
