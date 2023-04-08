@@ -1,0 +1,37 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Install missing pacakages  
+      ansible.builtin.apt:
+        name: 
+    - samba
+    - mariadb-server
+    - apache2
+  state: present
+  update_cache: yes
+
+- name: Start apache2
+  ansible.builtin.service:
+    name: apache2
+    state: started
+
+- name: Start mariadb
+  ansible.builtin.service:
+    name: mariadb
+    state: started
+
+- name: Setup mariadb
+  ansible.builtin.command: mysql_secure_installation
+  args:
+    stdin: "y\ny\ny\ny\ny\n" 
+      # https://opensource.com/article/21/4/linux-memory-forensics
+      #- name: Install lime
+      #  ansible.builtin.shell:
+      #    cmd: "sudo apt-get install linux-modules-extra-$(uname -r) lime-forensics"
+      #
+      #- name: Enable kernel module for lime
+      #  ansible.builtin.shell:
+      #    cmd: "sudo modprobe lime"
+
+

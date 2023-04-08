@@ -1,0 +1,24 @@
+name: "DragonSec Production Server"
+author: "DragonSec SI"
+category: "Forensics"
+
+description: |
+  Our server is under attack, but we don't know what caused it.
+  Can you help us find the start point of the attack?
+connection_info: https://mem.dmp 
+
+value: 300 
+type: "dynamic"
+extra:
+  initial: 300 
+  decay: 50 
+  minimum: 100 
+
+flags:
+  - "DCTF{linUx_m3mdumps_Dr1ve_m3_NUts}"
+tags:
+  - "forensics"
+  - "medium"
+
+state: "visible"
+version: "0.1"

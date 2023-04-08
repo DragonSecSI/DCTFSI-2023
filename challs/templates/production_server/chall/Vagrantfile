@@ -1,0 +1,36 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+#
+Vagrant.configure("2") do |config|
+  config.vm.box = "generic/ubuntu1804"
+
+  config.vm.provider :libvirt do |libvirt|
+    libvirt.qemu_use_session = false
+  end
+
+  config.vm.define "production-server-18" do |rootNode|
+   rootNode.vm.hostname = "production-server-18"
+   rootNode.vm.provider :libvirt do |libvirt, override|
+      libvirt.memory = 1024 
+      libvirt.nested = true
+      libvirt.cpus = 1
+   end
+
+    rootNode.vm.provision "server_init", type:'ansible' do |ansible|
+      ansible.playbook = "server_init.yml"
+      ansible.become = true
+      ansible.host_key_checking = false
+      ansible.verbose = "vv"
+    end
+  end 
+
+  config.vm.define "threat-actor" do |taNode|
+    taNode.vm.hostname = "threat-actor"
+    taNode.vm.provider :libvirt do |libvirt, override|
+        libvirt.memory = 1024 
+        libvirt.nested = true
+        libvirt.cpus = 1
+    end
+  
+    end
+end
