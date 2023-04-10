@@ -3,18 +3,20 @@ version: '3.3'
 services:
   blog:
     image: yet-another-blog/application
+    user: ${UID:?UID is not set}:${GID:?GID is not set}
     build:
       context: ./app/
       args:
         - FLAG=${FLAG:?FLAG is not set}
-        - HOST_IP=${HOST_IP:?HOST_IP is not set}
+        - HOST=${HOST:?HOST is not set}
+        - FQDN=${FQDN:?FQDN is not set}
     networks:
       - internal
     ports:
       - 5000
     env_file: .env
     volumes:
-      - certs:/certs:ro
+      - ./certs/certbot/letsencrypt:/etc/letsencrypt:ro
 
   proxy:
     image: reverse-proxy
@@ -26,18 +28,15 @@ services:
         - FQDN=${FQDN:?FQDN is not set}
     restart: on-failure
     volumes:
-      - certs/:/etc/nginx/ssl
-      - ./proxy/https.conf:/etc/nginx/conf.d/https.conf
+      - ./certs/certbot/letsencrypt:/etc/letsencrypt
+      - ./certs/certbot/www:/var/www/certbot
 
     networks:
       - external
       - internal
     ports:
       - 80:80
-
-volumes:
-  certs:
-    driver: local
+      - 443:443
 
 networks:
   external:

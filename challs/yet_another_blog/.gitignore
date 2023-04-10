@@ -1,7 +1,6 @@
-.env
-
 certs/*
 !certs/.gitkeep
+certbot
 
 handout.zip
 

@@ -3,7 +3,7 @@ const cookieParser = require("cookie-parser");
 const helmet = require("helmet");
 const morgan = require("morgan");
 
-const { PORT, LISTEN_IP } = require("./config");
+const { PORT, HOST } = require("./config");
 
 // Routes
 const auth = require("./routes/auth");
@@ -28,6 +28,6 @@ app.use((err, req, res, next) => {
   return res.status(500).send("Internal server error");
 });
 
-app.listen(PORT, LISTEN_IP, () => {
-  console.log(`Application is on http://${LISTEN_IP}:${PORT}`);
+app.listen(PORT, HOST, () => {
+  console.log(`Application is on http://${HOST}:${PORT}`);
 });

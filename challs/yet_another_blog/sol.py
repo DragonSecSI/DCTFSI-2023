@@ -1,12 +1,16 @@
 import requests
-import jwt
+import jwt, os
 from cryptography import x509
 import subprocess
 import base64
 import json
 
-url = "http://localhost:3000"
-pk_file = "cert.pem" # You get this from the ssl cert
+
+url = "https://chall.aljaz.si"
+os.system("timeout 2s openssl s_client -connect chall.aljaz.si:443 2>/dev/null | openssl x509 -pubkey -noout > pk.sol.pem")
+
+
+pk_file = "pk.sol.pem" # You get this from the ssl cert
 jwt_tool_dir = "/opt/jwt_tool"
 
 

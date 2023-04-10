@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+  certbot:
+    image: certbot/certbot:v1.8.0
+    restart: on-failure
+    volumes:
+      - ./certs/certbot/letsencrypt:/etc/letsencrypt
+      - ./certs/certbot/www:/var/www/certbot
+      - ./certs/certbot/log:/var/log
+    command: certonly --agree-tos --renew-by-default --webroot
+        -w /var/www/certbot -d ${FQDN:?FQDN is not set}
+        --email '${ISSUER_MAIL:?ISSUER_MAIL is not set}"' --non-interactive
+    env_file:
+      - .env

@@ -1,21 +1,23 @@
 FROM node:latest
 
-WORKDIR /app
+ENV NODE_ENV production
 
-ARG FLAG
-ENV FLAG ${FLAG}
-ARG HOST
-ENV HOST ${HOST}
+WORKDIR /app
 
 COPY package*.json ./
 
 RUN npm install
 
-RUN groupadd nodeuser && useradd -g nodeuser nodeuser 
+ARG FLAG
+ENV FLAG ${FLAG}
+ARG HOST
+ENV HOST ${HOST}
+ARG FQDN
+ENV FQDN ${FQDN}
 
 COPY src/ ./src
 
-ENV NODE_ENV production
+RUN groupadd nodeuser && useradd -g nodeuser nodeuser && chown -R nodeuser:nodeuser /app
 
 USER nodeuser
 
