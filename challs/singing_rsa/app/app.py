@@ -4,9 +4,8 @@ import os
 import sys
 
 
-
 FLAG = os.environ.get('FLAG', 'flag{test_flag}')
-MARKOV_PODPIS = b'To je poslal Marko.'
+MARK_SIGNATURE = b'Sent by Mark.'
 
 
 class CryptoSession:
@@ -19,11 +18,11 @@ class CryptoSession:
         self.d = inverse(self.e, tot)
 
     def sign_message(self, sporocilo: bytes):
-        if MARKOV_PODPIS in sporocilo:
-            return None, b'Ti pa nisi Marko!'
+        if MARK_SIGNATURE in sporocilo:
+            return None, b'You aren\'t Mark!'
         sporocilo = bytes_to_long(sporocilo)
         if sporocilo > self.n:
-            return None, b'Predolgo sporocilo!'
+            return None, b'Message too long!'
         podpis = pow(sporocilo, self.d, self.n)
         return (podpis, self.e, self.n), None
 
@@ -34,21 +33,21 @@ class CryptoSession:
         return pow(podpis, self.e, self.n) == sporocilo
 
     def get_flag(self, m: str, s: int):
-        if MARKOV_PODPIS in m and self.verify(m, s):
+        if MARK_SIGNATURE in m and self.verify(m, s):
             return FLAG, None
-        return None, b'Napacen podpis!'
+        return None, b'Wrong signature!'
 
 
 class Connection:
     def __init__(self) -> None:
         self.blackbox = CryptoSession()
-    
+
     def run(self):
         menu = b'''\
-[1] Podpisi sporocilo zase
-[2] Jaz sem Marko, preveri moj podpis
-[3] Izhod
-Izbira: '''
+[1] Sign a message
+[2] Mark here, check my signature
+[3] Exit
+Choice: '''
         while True:
             try:
                 option = int(self.input(menu).decode())
@@ -60,39 +59,39 @@ Izbira: '''
                     self.exit()
                     break
                 else:
-                    print(b'Neveljavna izbira!')
+                    print(b'Invalid choice!')
             except (EOFError) as e:
-                self.print(b'Napaka!')
-                pass    
+                self.print(b'Error!')
+                pass
             except (UnicodeError) as e:
                 self.print("UnicodeError")
                 raise e
             self.print()
 
     def sign_prompt(self):
-        t = self.input(b"Sporocilo: ")
+        t = self.input(b"Message: ")
 
         data, err = self.blackbox.sign_message(t)
         if err:
-            self.print(b'Napaka pri podpisovanju:', err)
-            return 
-        p,e,n = data
-        self.print(b'Podpis:', f"p={p}", f"e={e}", f"n={n}", sep='\n')
+            self.print(b'Error signing:', err)
+            return
+        p, e, n = data
+        self.print(b'Signature:', f"p={p}", f"e={e}", f"n={n}", sep='\n')
 
     def verify_prompt(self):
-        t = self.input(b'Sporocilo: ')
-        s = int(self.input(b'Podpis: ').decode())
+        t = self.input(b'Message: ')
+        s = int(self.input(b'Signature: ').decode())
         msg, err = self.blackbox.get_flag(t, s)
         if err:
-            self.print(f'Napaka pri preverjanju podpisa: {err}')
+            self.print(f'Error verifying signature:', err)
             return
-        self.print(f'Podpis je veljaven!\n{msg}')
+        self.print(f'Signature is valid!', msg, sep="\n")
 
     def exit(self):
-        self.print(b'Nasvidenje!')
+        self.print(b'Bye!')
         exit(0)
-    
-    ### Socket stuff
+
+    # Socket stuff
     def to_bytes(self, x):
         if isinstance(x, bytes):
             return x
@@ -113,4 +112,3 @@ Izbira: '''
 
 if __name__ == '__main__':
     Connection().run()
-    

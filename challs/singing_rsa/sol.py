@@ -6,12 +6,12 @@ from Crypto.Util.number import long_to_bytes, bytes_to_long, inverse
 
 r = remote("localhost", 1337)
 
-MARKOV_PODPIS = b'To je poslal Marko.'
+MARKOV_PODPIS = b'Sent by Mark.'
 
 
 def sign(sporocilo: bytes):
     r.clean_and_log()
-    r.recvuntil(b"Izbira: ", timeout=0.2)
+    r.recvuntil(b"Choice: ", timeout=0.2)
     r.sendline(b"1")
     r.recvuntil(b": ")
     r.sendline(sporocilo)
@@ -46,7 +46,7 @@ print(signature_)
 signature = (signature_ * inverse(a, n)) % n
 print(signature)
 
-r.recvuntil(b"Izbira: ")
+r.recvuntil(b"Choice: ")
 r.sendline(b"2")
 r.sendline(MARKOV_PODPIS)
 r.sendline(str(signature).encode())
