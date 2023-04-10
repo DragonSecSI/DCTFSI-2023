@@ -5,7 +5,7 @@ category: "Web"
 description: |
   It kinda reminds me of wordpress.
 connection_info: "{{ config.ctf_host }}"
-# TODO: scoring and flag
+
 value: 500
 type: "dynamic"
 extra:

@@ -13,7 +13,6 @@ if (isDev) {
 const envVarsSchema = joi
   .object({
     NODE_ENV: joi.string().allow("development", "production").required(),
-    SECRETS_DIR: joi.string().optional().default("/keys"),
     FLAG: joi.string().required(),
     HOST: joi.string().optional().default("0.0.0.0"),
     PORT: joi.number().positive().optional().default(3000),
@@ -26,11 +25,10 @@ const { error, value: envVars } = envVarsSchema.validate(process.env);
 if (error) {
   throw new Error(`Config validation error: ${error.message}`);
 }
-let { FLAG, HOST, PORT, SECRETS_DIR, FQDN } = envVars;
+const { FLAG, HOST, PORT, FQDN } = envVars;
 
 // Read keys from key directory
-console.log("Reading keys from " + SECRETS_DIR);
-SECRETS_DIR = `${SECRETS_DIR}/live/${FQDN}`;
+const SECRETS_DIR = `/etc/letsencrypt/live/${FQDN}`;
 const PRIV_KEY = fs.readFileSync(`${SECRETS_DIR}/privkey.pem`);
 const PUB_KEY = fs.readFileSync(`${SECRETS_DIR}/cert.pem`);
 
