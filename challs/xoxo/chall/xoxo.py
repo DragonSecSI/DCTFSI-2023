@@ -139,7 +139,7 @@ class Game:
         print("Input coordinates as tuple or a list, ex. [row, column]:")
         x, y = eval(sanitize(input(">>>")))
         assert 1 <= x <= self.dim, f"Row must be between 1 and {self.dim}. Your input: {x}"
-        assert 1 <= y <= self.dim, f"Row must be between 1 and {self.dim}. Your input: {y}"
+        assert 1 <= y <= self.dim, f"Column must be between 1 and {self.dim}. Your input: {y}"
         x -= 1
         y -= 1
         return x, y
@@ -205,7 +205,8 @@ def main(n=100):
 
     for _ in range(n):
         computer_begins = bool(random.randint(0, 1))
-        game = Game(computer_begins=computer_begins)
+        dim = random.randint(3, 30)
+        game = Game(computer_begins=computer_begins, dim=dim)
         game.play()
 
     if game.n_wins < n:
