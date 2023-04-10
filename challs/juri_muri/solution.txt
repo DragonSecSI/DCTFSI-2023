@@ -1,4 +1,17 @@
-## Solution:
+## Quick solution:
+
+Send a mail to `therealjurimuri@gmail.com` containing text: `Edward the Elephant, Tanzania, 2008, swimming`.
+The response includes base64-encoded string:
+
+```
+`! SECRET !
+SSBhbSBjb21pbmcgdG8gdmlzaXQgaW4gdGhlIGJlZ2lubmluZyBvZiBNYXkgYWxyZWFkeSwgaXQgd2lsbCBiZSBhIHN1cnByaXNlIGZvciBldmVyeW9uZSEgWW91IHdpbGwgaGVscCBtZSBzZXQgdXAgYSBzdXJwcmlzZSBwYXJ0eSEgClAuUy4gRENURntiM19jNFIzZnVMX3cxN2hfczNjVXIxdHlfcXUzNTcxMG41fQ==
+! SECRET !
+```
+
+Decoded string contains the flag: `DCTF{b3_c4R3fuL_w17h_s3cUr1ty_qu35710n5}`
+
+## Intended solution:
 
 The search should find him on Twitter. We can write Juri an email and the automated response tells us we need to prove we are his friend.
 The required info is:
@@ -7,24 +20,17 @@ The required info is:
 - the date of his last visit
 - what is Juri's favourite sport
 
-There is a tweet including a picture of elephants saying they're his friends. Maybe this friend is an elephant.
+Juri's first tweet includes a picture of elephants saying they're his friends. Maybe this friend is an *elephant*.
 
-The second tweet has a link to a deleted YT video which can be retrieved with Wayback machine:
+His second tweet has a link to a deleted YT video which can be retrieved with Wayback machine:
 https://web.archive.org/web/20230406185655/https://www.youtube.com/watch?v=5agfHmwXrY4
-At the end there is written a date which could be the date of his last visit.
+At the end there is written a date which could be the date of his last visit in *2008*.
 
 The comments on the tweets are made by some Monkey, which is not the friend we are looking for.
-One of Monkey's tweets tells us that one of his friends likes to swim. Maybe this is Juri.
-We can find two tweets naming elephants: Ellie the Elephant and Edward the Elephant. The second one is correct.
-The location can be induced from Monkey's banner photo (a quick image search is all we need). The location is in Tanzania.
+One of Monkey's tweets tells us that one of his friends *likes to swim*. Maybe this is Juri.
+We can find two tweets naming elephants: *Efuru the Elephant* and *Ebele the Elephant*. The second one is correct.
+The location can be induced from Monkey's banner photo - he spreads local gossip according to his intro.
+So all these animals must live in his neighborhood or at least the same city, but almost surely the same country.
+A quick image search for Monkey's banner photo is all we need. The location is in *Tanzania*.
 
-## Quick solution:
-
-Send a mail to `therealjurimuri@gmail.com` containing text: `Edward the Elephant, Tanzania, 2008, swimming`.
-The response includes base64-encoded string:
-
-! SECRET !
-SSBhbSBjb21pbmcgdG8gdmlzaXQgaW4gdGhlIGJlZ2lubmluZyBvZiBNYXkgYWxyZWFkeSwgaXQgd2lsbCBiZSBhIHN1cnByaXNlIGZvciBldmVyeW9uZSEgWW91IHdpbGwgaGVscCBtZSBzZXQgdXAgYSBzdXJwcmlzZSBwYXJ0eSEgClAuUy4gRENURntiM19jNFIzZnVMX3cxN2hfczNjVXIxdHlfcXUzNTcxMG41fQ==
-! SECRET !
-
-Decoded string contains the flag: DCTF{b3_c4R3fuL_w17h_s3cUr1ty_qu35710n5}
+Now we can follow the steps from above (Quick Solution).
