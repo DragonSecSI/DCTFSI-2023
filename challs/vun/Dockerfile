@@ -8,10 +8,12 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 
 COPY chall/flag.txt /
 COPY chall/app /
+COPY chall/start.sh /
 
 RUN chmod 555 /app && \
-    chmod 444 /flag.txt
+    chmod 444 /flag.txt && \
+    chmod 555 /start.sh
 
 CMD socat -T 30 \
     TCP-LISTEN:1337,nodelay,reuseaddr,fork \
-    EXEC:"stdbuf -i0 -o0 -e0 /app"
+    EXEC:"stdbuf -i0 -o0 -e0 /start.sh"
