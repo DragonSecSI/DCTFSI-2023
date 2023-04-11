@@ -1,0 +1,10 @@
+notes:
+- run with " ulimit -s unlimited " 
+
+
+solution : 
+4
+2 4198804
+0 4205191
+2 4198806
+0 4205193
