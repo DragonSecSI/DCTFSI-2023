@@ -23,3 +23,16 @@ module "chall_pwn_casino" {
   k8s_image           = "dctf23.azurecr.io/challs/casino:latest"
   k8s_registry_secret = kubernetes_secret.registry_secret.metadata.0.name
 }
+
+module "chall_pwn_xoxo" {
+  source = "./modules/challs/pwn/"
+  count = 1
+
+  name = "xoxo"
+  ip   = azurerm_public_ip.challs_pwn.ip_address
+  port = 13372
+
+  k8s_namespace       = "default"
+  k8s_image           = "dctf23.azurecr.io/challs/xoxo:latest"
+  k8s_registry_secret = kubernetes_secret.registry_secret.metadata.0.name
+}

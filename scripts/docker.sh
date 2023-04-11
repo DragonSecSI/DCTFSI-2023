@@ -14,3 +14,6 @@ dockerize() {
 # Pwn
 dockerize "vun" "vun"
 dockerize "casino" "casino"
+
+# Misc
+dockerize "xoxo" "xoxo"
