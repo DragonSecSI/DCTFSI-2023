@@ -5,7 +5,7 @@ category: "PWN"
 description: |
   Sometimes all we need is a bit o VUN.
 
-connection_info: nc vun.dctf.si 1337
+connection_info: nc pwn.dctf.si 1337
 
 value: 500
 type: "dynamic"
@@ -20,7 +20,7 @@ flags:
   - "DCTF{Y0u_4r3_TH3_Tru3_D3C3ND4Nt_0F_vuN}"
 tags:
   - "pwn"
-  - "Easy"
+  - "easy"
 
 state: "visible"
 version: "0.1"
