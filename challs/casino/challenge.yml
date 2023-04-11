@@ -1,0 +1,26 @@
+name: "Casino"
+author: "aJuvan"
+category: "PWN"
+
+description: |
+  Come over to our casino and place a bet! We'll even give you 100 Eur to start!
+
+connection_info: nc pwn.dctf.si 1337
+
+value: 500
+type: "dynamic"
+extra:
+  initial: 500
+  decay: 50
+  minimum: 50
+
+files:
+  - "chall/app"
+flags:
+  - "DCTF{1n_A_r1Chm4nS_w0rLD}"
+tags:
+  - "pwn"
+  - "baby"
+
+state: "visible"
+version: "0.1"
