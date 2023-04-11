@@ -35,9 +35,11 @@ class Game:
 
     def __init__(self, dim=3, computer_begins=True):
         assert 3 <= dim <= 100
+
+        print(f"This round will be played on {dim}x{dim} board!")
+
         self.dim = dim
         self.n_moves = 0
-        self.n_wins = 0
 
         self.computer = 'X'
         self.player = 'O'
@@ -207,15 +209,19 @@ def main(n=100):
     print(f"Welcome to tic-tac-toe game! I have the flag and it might be yours if you beat me {n} times in a row.")
     print("Let's randomly determine who begins!")
 
+    n_wins = 0
+
     for _ in range(n):
         computer_begins = bool(random.randint(0, 1))
         dim = random.randint(3, 30)
         game = Game(computer_begins=computer_begins, dim=dim)
         game.play()
+        if game.win == game.player:
+            n += 1
 
-    if game.n_wins < n:
+    if n_wins < n:
         print(f"You did not succeed in getting {n} wins.")
-    elif game.n_wins == n:
+    elif n_wins == n:
         print("You won, so what! Did you expect me to just give you the flag?")
     else:
         print("Wow how did you do that? I'm kinda scared. Here's your flag, please leave me alone.")
