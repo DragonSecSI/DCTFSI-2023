@@ -22,6 +22,12 @@ resource "azurerm_kubernetes_cluster" "k8s" {
   identity {
     type = "SystemAssigned"
   }
+
+  lifecycle {
+    ignore_changes = [
+      oms_agent
+    ]
+  }
 }
 
 resource "azurerm_public_ip" "challs_pwn" {
