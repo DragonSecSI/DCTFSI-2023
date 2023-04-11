@@ -15,4 +15,4 @@ and override __free_hook with the second one_gadget.~~
 
 Solution in [sol.py](sol.py)
 
-Flag: `dctf{D035_4nyb0dy_l1st3n_T0_Ur14h_He4p_1093875hv914387v}`
+Flag: `DCTF{D035_4nyb0dy_l1st3n_T0_Ur14h_He4p_013gh1h1304h0139}`
