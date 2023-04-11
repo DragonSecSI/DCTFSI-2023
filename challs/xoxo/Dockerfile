@@ -1,22 +1,18 @@
 FROM python:3
 
-RUN apt-get update && apt-get install -y \
-  xinetd \
-  && rm -rf /var/lib/apt/lists/*
+RUN apt-get -y update && \
+    apt-get install -y socat coreutils && \
+    rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /ctf
-WORKDIR /ctf
-RUN useradd -M -d /ctf ctf
+COPY ./chall /
 
-RUN echo "Connection blocked" > /etc/banner_fail
-COPY xoxo.xinetd /etc/xinetd.d/ctf
-COPY ./chall /ctf/
-
-RUN chown -R root:ctf /ctf && \
-  chmod -R 750 /ctf
-
+RUN chmod 444 /secret.py && \
+    chmod 555 /xoxo.py && \
+    chmod 555 /xoxo.sh
 
 ENTRYPOINT []
-CMD ["/usr/sbin/xinetd", "-dontfork"]
+CMD socat -T 30 \
+    TCP-LISTEN:1337,nodelay,reuseaddr,fork \
+    EXEC:"stdbuf -i0 -o0 -e0 /xoxo.sh"
 
 EXPOSE 1337

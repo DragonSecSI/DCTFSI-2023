@@ -217,7 +217,7 @@ def main(n=100):
         game = Game(computer_begins=computer_begins, dim=dim)
         game.play()
         if game.win == game.player:
-            n += 1
+            n_wins += 1
 
     if n_wins < n:
         print(f"You did not succeed in getting {n} wins.")
