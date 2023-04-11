@@ -8,7 +8,7 @@ from sys import modules
 modules.clear()
 del modules
 
-re_sanitize = re.compile(r'(?:globals|__|import|locals|exec|eval|join|format|replace|translate|try|except|with|content|frame|back|open|write|read)').sub
+re_sanitize = re.compile(r'(?:globals|__|import|locals|exec|eval|join|format|replace|translate|try|except|with|content|frame|back|open|write|read|print|breakpoint)').sub
 alphabet = string.ascii_letters + string.digits + "([,])"
 
 
