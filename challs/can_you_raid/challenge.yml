@@ -1,0 +1,26 @@
+name: "Can you raid"
+author: "Pixel"
+category: "Forensics"
+
+description: |
+  We have recovered two disks. Can you find if there is any important data on them?
+  Virtual machines might be helpful...
+value: 500
+type: "dynamic"
+extra:
+  initial: 500
+  decay: 50
+  minimum: 50
+
+files:
+  - "chall/raid_p1.vdi"
+  - "chall/raid_p2.vdi"
+flags:
+  - "DCTF{l0g1c4l_v0lum35_ru13}"
+tags:
+  - "forensics"
+  - "disks"
+  - "file system"
+
+state: "visible"
+version: "0.1"
