@@ -1,24 +1,23 @@
-FROM node:latest
+FROM node:18-alpine
 
 ENV NODE_ENV production
 
 WORKDIR /app
 
+RUN mkdir /.npm
 COPY package*.json ./
 
 RUN npm install
 
+ENV NODE_ENV production
 ARG FLAG
 ENV FLAG ${FLAG}
 ARG HOST
 ENV HOST ${HOST}
-ARG FQDN
-ENV FQDN ${FQDN}
 
 COPY src/ ./src
 
-RUN groupadd nodeuser && useradd -g nodeuser nodeuser && chown -R nodeuser:nodeuser /app
-
+RUN addgroup nodeuser && adduser -DG nodeuser nodeuser && chown -R nodeuser:nodeuser /app /.npm
 USER nodeuser
 
 CMD ["node", "src/index.js"]

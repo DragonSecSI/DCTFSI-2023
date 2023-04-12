@@ -16,7 +16,6 @@ const envVarsSchema = joi
     FLAG: joi.string().required(),
     HOST: joi.string().optional().default("0.0.0.0"),
     PORT: joi.number().positive().optional().default(3000),
-    FQDN: joi.string(),
   })
   .unknown();
 
@@ -25,12 +24,12 @@ const { error, value: envVars } = envVarsSchema.validate(process.env);
 if (error) {
   throw new Error(`Config validation error: ${error.message}`);
 }
-const { FLAG, HOST, PORT, FQDN } = envVars;
+const { FLAG, HOST, PORT } = envVars;
 
 // Read keys from key directory
-const SECRETS_DIR = `/etc/letsencrypt/live/${FQDN}`;
-const PRIV_KEY = fs.readFileSync(`${SECRETS_DIR}/privkey.pem`);
-const PUB_KEY = fs.readFileSync(`${SECRETS_DIR}/cert.pem`);
+const SECRETS_DIR = `/secrets`;
+const PRIV_KEY = fs.readFileSync(`${SECRETS_DIR}/tls.key`);
+const PUB_KEY = fs.readFileSync(`${SECRETS_DIR}/tls.crt`);
 
 // Random password for admin login
 const ADMIN_PASSWORD = isDev ? "admin" : crypto.randomBytes(16).toString("hex");
