@@ -1,1 +1,0 @@
-This is a client that constantly connects to the flagserver, logs in, and exits. It should do it over plain TCP.

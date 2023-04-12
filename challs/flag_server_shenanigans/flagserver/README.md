@@ -1,1 +1,0 @@
-Flag server, that only has a flag for admin.
