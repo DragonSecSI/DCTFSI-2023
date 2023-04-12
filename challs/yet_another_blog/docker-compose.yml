@@ -3,7 +3,8 @@ version: '3.3'
 services:
   blog:
     image: yet-another-blog/application
-    user: ${UID:?UID is not set}:${GID:?GID is not set}
+    # If certificates are not accessible, run `export UID=$(id -u) && export GID=$(id -g) && docker-compose up -d`
+    # user: ${UID:?UID is not set}:${GID:?GID is not set}
     build:
       context: ./app/
       args:
@@ -13,7 +14,7 @@ services:
     networks:
       - internal
     ports:
-      - 5000
+      - 3000
     env_file: .env
     volumes:
       - ./certs/certbot/letsencrypt:/etc/letsencrypt:ro
