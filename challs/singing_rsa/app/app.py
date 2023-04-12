@@ -4,7 +4,7 @@ import os
 import sys
 
 
-FLAG = os.environ.get('FLAG', 'flag{test_flag}')
+FLAG = os.environ.get('FLAG', 'DCTF{test_flag}')
 MARK_SIGNATURE = b'Sent by Mark.'
 
 
