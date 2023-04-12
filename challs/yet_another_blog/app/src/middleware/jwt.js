@@ -20,7 +20,6 @@ const isAdmin = (req, res, next) => {
           console.log("Error: " + err);
           return res.redirect("/admin_login");
         }
-        console.log("Decoded: " + decoded);
         if (decoded.user !== "admin") {
           return res.redirect("/admin_login");
         }

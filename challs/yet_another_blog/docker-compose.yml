@@ -3,30 +3,27 @@ version: '3.3'
 services:
   blog:
     image: yet-another-blog/application
-    # If certificates are not accessible, run `export UID=$(id -u) && export GID=$(id -g) && docker-compose up -d`
-    # user: ${UID:?UID is not set}:${GID:?GID is not set}
     build:
       context: ./app/
       args:
-        - FLAG=${FLAG:?FLAG is not set}
-        - HOST=${HOST:?HOST is not set}
-        - FQDN=${FQDN:?FQDN is not set}
+        - FLAG=DCTF{test_flag}
+        - HOST=0.0.0.0
     networks:
       - internal
     ports:
       - 3000
     env_file: .env
     volumes:
-      - ./certs/certbot/letsencrypt:/etc/letsencrypt:ro
+      - ./certs/certbot/letsencrypt/live/a.test.si:/secrets:ro
 
   proxy:
-    image: reverse-proxy
+    image: yet-another-blog/reverse-proxy
     build:
       context: ./proxy/
       dockerfile: Dockerfile
       args:
         # Just HTTPS stuff :)
-        - FQDN=${FQDN:?FQDN is not set}
+        - FQDN=a.test.si
     restart: on-failure
     volumes:
       - ./certs/certbot/letsencrypt:/etc/letsencrypt
