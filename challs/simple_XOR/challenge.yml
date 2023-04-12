@@ -1,0 +1,24 @@
+name: "Simple XOR"
+author: "Bumblebee"
+category: "Crypto"
+
+description: |
+  Can you help me find the key and decipher this strange encoding?
+value: 500
+type: "dynamic"
+extra:
+  initial: 500
+  decay: 50
+  minimum: 50
+
+files:
+  - "chall/ciphertext.txt"
+  - "chall/xor.py"
+flags:
+  - "DCTF{Im_like_an_XOR_gate_I_cant_even}"
+tags:
+  - "crypto"
+  - "baby"
+
+state: "visible"
+version: "0.1"
