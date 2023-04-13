@@ -4,7 +4,7 @@
 
 ## Idea
 
-To demonstrate, why using
+To demonstrate why using
 
 ```php
 srand(float(time()));
