@@ -37,5 +37,3 @@ cipher = AES.new(key, AES.MODE_CBC, iv)
 flag = cipher.decrypt(ct)
 
 print(unpad(flag, 16).decode())
-
-

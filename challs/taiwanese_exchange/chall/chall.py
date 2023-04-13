@@ -29,6 +29,3 @@ cipher = AES.new(key, AES.MODE_CBC, iv)
 ciphertext = cipher.encrypt(pad(FLAG, 16))
 print(f"iv = {iv.hex()}")
 print(f"ct = {ciphertext.hex()}")
-
-
-

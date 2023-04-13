@@ -9,5 +9,3 @@ The solution is a Pohlig-Hellman attack, which is actually already built into Sa
 This attack only works sometimes due to some shenanigans with the wacky group order, which is the reason we give an output file instead of a server.
 
 Flag: `DCTF{sM00tH_0rD3r_r3qU1R3s_P0hl1G_H3LLm4n}`
-
-
