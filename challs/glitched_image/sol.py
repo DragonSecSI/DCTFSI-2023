@@ -1,5 +1,6 @@
 # source for OG image: https://dragonsec.si/assets/images/about-us.jpg
 # participants to retreive the image from the dragonsec website
+import base64
 
 image = open("about-us.jpeg", "rb")
 contents = image.read()
@@ -14,4 +15,4 @@ for og, mask in zip(contents, copyCon):
     if og != mask:
         msgStr += chr(og)
 
-print(msgStr)
+print(base64.b64decode(msgStr).decode())
