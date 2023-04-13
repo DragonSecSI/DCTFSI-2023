@@ -1,0 +1,23 @@
+name: "Glitched image"
+author: "Katya"
+category: "Misc"
+
+description: |
+  Something is wrong with this image - I should find the file that isn't broken. But I'll have to look elsewhere..
+
+value: 500
+type: "dynamic"
+extra:
+  initial: 500
+  decay: 50
+  minimum: 50
+
+files:
+  - "glitched.jpeg"
+flags:
+  - "DCTF{f1nD_7h3_d1Ff3r3NCe5}
+tags:
+  - "misc"
+
+state: "visible"
+version: "0.1"
