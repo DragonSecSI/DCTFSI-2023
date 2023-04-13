@@ -1,0 +1,22 @@
+name: "Baby rev 2"
+author: "Riggle"
+category: Rev
+
+description: "No more yawning"
+type: "dynamic"
+extra:
+  initial: 500
+  decay: 50
+  minimum: 50
+
+files:
+  - "./baby_rev_2.tar.gz"
+
+flags:
+  - DCTF{v3rY_cOOl_she11c0de_APP_8dc31a}
+
+tags:
+  - rev
+  - medium
+
+state: visible
