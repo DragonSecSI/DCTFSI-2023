@@ -1,8 +1,9 @@
-name: "Baby rev 2"
+name: "Babyless rev"
 author: "Riggle"
 category: Rev
 
 description: "No more yawning"
+value: 500
 type: "dynamic"
 extra:
   initial: 500
