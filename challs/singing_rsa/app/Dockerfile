@@ -2,8 +2,7 @@ FROM python:3.7
 
 WORKDIR /app
 
-ARG FLAG
-ENV FLAG=$FLAG
+ENV FLAG="DCTF{r54_g0e5_l4l4l4_fa44d37}"
 
 COPY requirements.txt requirements.txt
 

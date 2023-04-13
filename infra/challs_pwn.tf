@@ -49,3 +49,16 @@ module "chall_pwn_shellstraction" {
   k8s_image           = "dctf23.azurecr.io/challs/shellstraction:latest"
   k8s_registry_secret = kubernetes_secret.registry_secret.metadata.0.name
 }
+
+module "chall_pwn_rsa" {
+  source = "./modules/challs/pwn/"
+  count = 1
+
+  name = "rsa"
+  ip   = azurerm_public_ip.challs_pwn.ip_address
+  port = 13374
+
+  k8s_namespace       = "default"
+  k8s_image           = "dctf23.azurecr.io/challs/rsa:latest"
+  k8s_registry_secret = kubernetes_secret.registry_secret.metadata.0.name
+}

@@ -69,6 +69,19 @@ resource "kubernetes_secret" "dctf-wildcard" {
   type = "kubernetes.io/tls"
 }
 
+resource "kubernetes_secret" "dctf-blog" {
+  metadata {
+    name = "dctf-blog"
+  }
+
+  data = {
+    "tls.crt" = module.acme_dctf_blog_certificate.certificate
+    "tls.key" = module.acme_dctf_blog_certificate.private_key
+  }
+
+  type = "kubernetes.io/tls"
+}
+
 resource "kubernetes_secret" "registry_secret" {
   metadata {
     name = "registry-secret"

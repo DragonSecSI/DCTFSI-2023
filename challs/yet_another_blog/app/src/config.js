@@ -15,7 +15,7 @@ const envVarsSchema = joi
     NODE_ENV: joi.string().allow("development", "production").required(),
     FLAG: joi.string().required(),
     HOST: joi.string().optional().default("0.0.0.0"),
-    PORT: joi.number().positive().optional().default(3000),
+    PORT: joi.number().positive().optional().default(8000),
   })
   .unknown();
 

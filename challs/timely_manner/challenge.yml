@@ -4,7 +4,7 @@ category: "Web"
 
 description: |
   I don't get it. Does this website think I can see in the future?
-connection_info: "{{ config.ctf_host }}"
+connection_info: "tmnt.dctf.si"
 # TODO: scoring and flag
 value: 500
 type: "dynamic"

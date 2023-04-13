@@ -1,4 +1,4 @@
-resource "kubernetes_ingress" "ingress" {
+resource "kubernetes_ingress_v1" "ingress" {
   metadata {
     name = "web-${var.name}-ingress"
     namespace = var.k8s_namespace
@@ -14,8 +14,12 @@ resource "kubernetes_ingress" "ingress" {
       http {
         path {
           backend {
-            service_name = kubernetes_service.service.metadata.0.name
-            service_port = 8000
+            service {
+              name = kubernetes_service_v1.service.metadata.0.name
+              port {
+                number = 8000
+              }
+            }
           }
 
           path = "/"
@@ -31,14 +35,14 @@ resource "kubernetes_ingress" "ingress" {
   wait_for_load_balancer = true
 }
 
-resource "kubernetes_service" "service" {
+resource "kubernetes_service_v1" "service" {
   metadata {
     name = "web-${var.name}-service"
     namespace = var.k8s_namespace
   }
   spec {
     selector = {
-      app = kubernetes_deployment.deployment.spec.0.template.0.metadata.0.labels.app
+      app = kubernetes_deployment_v1.deployment.spec.0.template.0.metadata.0.labels.app
     }
 
     port {
@@ -50,7 +54,7 @@ resource "kubernetes_service" "service" {
   }
 }
 
-resource "kubernetes_deployment" "deployment" {
+resource "kubernetes_deployment_v1" "deployment" {
   metadata {
     name = "web-${var.name}-deployment"
     namespace = var.k8s_namespace
