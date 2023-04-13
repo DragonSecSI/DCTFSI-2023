@@ -13,7 +13,7 @@ extra:
   minimum: 50
 
 files:
-  - "chall/Q1_finances.xls"
+  - "chall/Q1_finances.xlsx"
 flags:
   - "DCTF{n07_R34Lly_h1dD3n}"
 tags:

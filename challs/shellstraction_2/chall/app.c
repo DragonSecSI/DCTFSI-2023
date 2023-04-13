@@ -14,9 +14,6 @@
 #include <sys/types.h>
 
 
-// macros
-// #define ee(code, errstr);               fprintf(stderr, "%s: %d\n", errstr, code); fflush(NULL); exit(1);
-// #define pf(str)                      fprintf(stdout, str); fflush(NULL);
 #define pf(format, ...);                fprintf(stdout, (format), ##__VA_ARGS__); fflush(NULL);
 #define pfc(format, retval, ...);       fprintf(stdout, (format), ##__VA_ARGS__); fflush(NULL); lastex = retval;
 #define perrorfc(str, errcode);         perror(str); lastex = errcode;
@@ -26,7 +23,6 @@
 
 
 
-// AG
 char* user;
 char* host;
 char path[200];
@@ -35,36 +31,27 @@ int guard = 0;
 
 char* notes_arr[10];
 
-// RE
 int token_count;
-char* tokens[50];           // token pointers array limited to 50 pointers??
+char* tokens[50];
 char* sh_name;
 int statp;
 int background = 0;
-/* int file_in = 0;
-char* file_in_name;
-int file_out = 0;
-char* file_out_name; */
 int lastex = 0;
 
-// sighandler
 void process(int s) {
     switch (s) {
-        case 17: // SIGCHLD
+        case 17:
             wait(&statp);
             return;
     }
 }
 
-// IO setup
 void setup() {
     setvbuf(stdin, 0, _IONBF, 0);
     setvbuf(stdout, 0, _IONBF, 0);
     setvbuf(stderr, 0, _IONBF, 0);
 }
 
-// stores pointers to the first characters of tokens/multitokens (tokens wrapped in quotation marks) in the global tokens array
-// this function does not check for tokens array bounderies
 void tokenize(char* line) {
     token_count = 0;
     int newtoken = 1;
@@ -75,16 +62,14 @@ void tokenize(char* line) {
     int len = strlen(line);
     for (int i = 0; i < len; i++) {
         char curr = line[i];
-        //printf(":%c: %d %d %d\n", curr, token_count, newtoken, multitoken);
         if (newtoken == 1) {
-            // check for max token count
             if (token_count > 50) {
                 puts("Too many tokens.");
                 fflush(stdout);
                 return;
             }
 
-            if (isspace(curr) != 0) {        // isspace checks for white-space character, returns nonzero if curr is a white-space
+            if (isspace(curr) != 0) {
                 line[i] = '\0';
                 continue;
             }
@@ -94,7 +79,7 @@ void tokenize(char* line) {
             }
             else {
                 multitoken = 0;
-                tokens[token_count] = &(line[i]);       // it stores address of the first char of the token in the tokens array
+                tokens[token_count] = &(line[i]);
             }
             newtoken = 0;
 
@@ -117,7 +102,6 @@ void name() {
     lastex = 0;
 }
 
-// my favourite function, thanks Mitič, very cool
 void help() {
     pfc("Help me!\n", 0);
 }
@@ -143,11 +127,6 @@ void eton() {
         return;
     }
 
-    // formats
-    // note add 0 asokidfh
-    // note remove 0
-    // note show 0 
-
     if (strcmp(tokens[1], "help") == 0) {
         pf("This is a simple shell program for saving personal notes!");
     }
@@ -172,7 +151,7 @@ void eton() {
         pf("Creating a note...");
         notes_arr[index] = (char*) malloc(size);
         if (notes_arr[index] != NULL) {
-            strncpy(notes_arr[index], tokens[4], strlen(tokens[4]));        // this copies input token on heap, without the nullbyte
+            strncpy(notes_arr[index], tokens[4], strlen(tokens[4]));
         }
         pf("Note created");
     }
@@ -229,9 +208,7 @@ void exit_shell() {
     if (token_count == 1) {
         exit(exit_code);
     } else {
-        // atoi doesnt detect errors, strtol can do the same thing plus error detection
         exit_code = (int) strtol(tokens[1], NULL, 10);
-        // exit(atoi(tokens[1]));
         if (exit_code == INT_MIN || exit_code == INT_MAX) {
             perrorfc("strtol", errno);
             return;
@@ -246,7 +223,6 @@ void status() {
 }
 
 void print() {
-    // zakaj printamo posebej prvi token in potem vse ostale?
     if (token_count > 1) {
         pf("%s", tokens[1]);
     }
@@ -261,7 +237,6 @@ void echo() {
     pfc("\n", 0);
 }
 
-// cd
 void dirchange() {
     int out = 0;
     if (token_count == 1) {
@@ -278,7 +253,6 @@ void dirchange() {
     }
 }
 
-// pwd
 void dirwhere() {
     if (getcwd(path, sizeof(path)) != NULL) {
         pfc("%s\n", 0, path);
@@ -287,7 +261,6 @@ void dirwhere() {
     }
 }
 
-// mkdir
 void dirmake() {
     int out = mkdir(tokens[1], 0755);
     if (out != 0) {
@@ -296,8 +269,6 @@ void dirmake() {
     else lastex = 0;
 }
 
-// ls
-// prints dir entries, not sorted
 void dirlist() {
     struct dirent *entry;
     DIR *dir;
@@ -322,8 +293,6 @@ void dirlist() {
     int counter = 0;
     while ((entry = readdir(dir)) != NULL) {
         char* nm = (entry->d_name);
-        //printf("%s ", nm);
-        //if (strcmp(".", nm) == 0 || strcmp("..", nm) == 0) continue;
         dirs[counter++] = nm;
     }
     if (counter > 0) {
@@ -335,7 +304,6 @@ void dirlist() {
     pfc("\n", 0);
 }
 
-// creates a file with a given path and only with read perms for everybody
 void touch() {
     int i = 0;
     signed char offset = 0;
@@ -346,11 +314,8 @@ void touch() {
     }
 
     for (i = 1; i < token_count; i++) {
-        // copy dir's name from tokens array onto the stack
-        // there is 50 tokens max
         offset += strlen(tokens[i]);
 
-        // create a dir with a given name
         int f = creat(tokens[i], 00444);
         if (f == -1) {
             perrorfc("touch", errno);
@@ -363,10 +328,6 @@ void touch() {
     }
 }
 
-/// @brief 
-/// @param argc 
-/// @param argv 
-/// @return 
 int main(int argc, char **argv) {
     setup();
 
@@ -376,7 +337,6 @@ int main(int argc, char **argv) {
     user = (char*) malloc(20);
     host = (char*) malloc(20);
 
-    // TODO: replace with strncpy
 	strcpy(sh_name, "agresh - The AlwaysGuilty-Red_Epicness Shell");
     strcpy(user, "competitor");
     strcpy(host, "shellstraction");
@@ -391,14 +351,10 @@ int main(int argc, char **argv) {
     memset(line, 0, 500);
 
 	while (1) {
-        // i had to comment this part out, otherwise the server wouldn't print the prompt when connected to via nc 
-	    /* if (isatty(1)) {
-            printf("%s@%s:%s$ ", user, host, path);
-        } */
         pf("%s@%s:%s$ ", user, host, path);
 
-	    int out = getline(&line, &size, stdin);         // stores pointer to buffer to *lineptr and updates *n with buffer size, returns number of chars read
-        if (out == -1) {                                // failure or EOF
+	    int out = getline(&line, &size, stdin);
+        if (out == -1) {
             break;
 	    }
 	    tokenize(line);
@@ -407,7 +363,6 @@ int main(int argc, char **argv) {
 	    }
 
 
-        // should we run this program in the background?
 	    if (strcmp(tokens[token_count - 1], "&") == 0) {
 	        background = 1;
 	        token_count--;
@@ -415,66 +370,12 @@ int main(int argc, char **argv) {
 	        background = 0;
 	    }
 
-        // order of file redirection: <inFile, >outFile, &
 
-        // redirect output into another file?                       // i commented these out because competetitors could've overwritten flag.txt file with "echo adsjhf >flag.txt"
-	    /* if (tokens[token_count - 1][0] == '>') {
-	        file_out = 1;
-	        file_out_name = &(tokens[token_count-1][1]);
-	        token_count--;
-	    } else {
-	        file_out = 0;
-	    } */
-
-        // redirect input from another file?
-	    /* if (tokens[token_count - 1][0] == '<') {
-	        file_in = 1;
-	        file_in_name = &(tokens[token_count-1][1]);
-	        token_count--;
-	    } else {
-	        file_in = 0;
-	    } */
-
-	    /* printf("\nTokens:\n");
-	    for (int i = 0; i < token_count; i++) {
-	        printf(":%s:\n", tokens[i]);
-	    }
-	    printf("Modifiers: IN_REDIR=%d (%s) OUT_REDIR=%d (%s) BKGRND=%d\n\n", file_in, file_in_name, file_out, file_out_name, background); */
-
-        // creating background process
 	    int cpid1 = -1;
 	    if (background == 1) {
 	        cpid1 = fork();
-	        if (cpid1 != 0) continue;       // if not in child, continue
+	        if (cpid1 != 0) continue;
 	    }
-
-        // open files for redirecting input/output
-	    /* FILE* old_stdout = stdout;
-	    if (file_out == 1) {
-	        stdout = fopen(file_out_name, "w");
-            if (stdout == NULL) {
-                stdout = old_stdout;
-                perror("Output redirection");
-                fflush(stdout);
-                continue;               // are errors here handled correctly? i don't know.
-            }
-	    }
-
-	    FILE* old_stdin = stdin;
-	    if (file_in == 1) {
-	        stdin = fopen(file_in_name, "r");
-            if (stdin == NULL) {
-                stdin = old_stdin;
-                perror("Input redirection");
-                fflush(stdout);
-                continue;
-            }
-	    } */
-
-
-        // make it so that it saves the user's random dir names on heap?
-
-        // evaluating the tokens
 	    if (strcmp(tokens[0], "name") == 0)             name();
 	    else if (strcmp(tokens[0], "help") == 0)        help();
         else if (strcmp(tokens[0], "whoami") == 0)      whoami();
@@ -491,17 +392,9 @@ int main(int argc, char **argv) {
         else if (strcmp(tokens[0], "note") == 0)        eton();
 	    else pf("Unknown command.");
         
-        // are we in the child process?
 	    if (cpid1 == 0) {
 	        break;
 	    }
-        // handlers for inpt/output redirection finalization
-	    /* if (file_out == 1) {
-	        stdout = old_stdout;
-	    }
-	    if (file_in == 1) {
-	        stdin = old_stdin;
-	    } */
 
         memset(line, 0, 500);
 
