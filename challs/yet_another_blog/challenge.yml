@@ -1,0 +1,27 @@
+name: "Yet another blog"
+author: "medic"
+category: "Web"
+
+description: |
+  It kinda reminds me of wordpress.
+connection_info: "blog.dctf.si"
+
+value: 500
+type: "dynamic"
+extra:
+  initial: 500
+  decay: 50
+  minimum: 50
+
+files:
+  - "challenge.tar.gz"
+flags:
+  # just upgrade jsonwebtoken to more than 8.5.1 in leetspeak:
+  - "DCTF{ju5t_upgr4d3_j50nw3b70k3n_t0_m0r3_th4n_8.5.1_9a042926a}"
+
+tags:
+  - "web"
+  - "medium"
+
+state: "visible"
+version: "1.0"
