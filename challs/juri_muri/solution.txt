@@ -1,6 +1,6 @@
 ## Quick solution:
 
-Send a mail to `therealjurimuri@gmail.com` containing text: `Edward the Elephant, Tanzania, 2008, swimming`.
+Send a mail to `therealjurimuri@gmail.com` containing text: `Ebele the Elephant, Tanzania, 2008, swimming`.
 The response includes base64-encoded string:
 
 ```
@@ -25,6 +25,7 @@ Juri's first tweet includes a picture of elephants saying they're his friends. M
 His second tweet has a link to a deleted YT video which can be retrieved with Wayback machine:
 https://web.archive.org/web/20230406185655/https://www.youtube.com/watch?v=5agfHmwXrY4
 At the end there is written a date which could be the date of his last visit in *2008*.
+From his account on YT (JuriMuri-ek5ez) we can find email in description (therealjurimuri@gmail.com).
 
 The comments on the tweets are made by some Monkey, which is not the friend we are looking for.
 One of Monkey's tweets tells us that one of his friends *likes to swim*. Maybe this is Juri.
