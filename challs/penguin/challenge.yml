@@ -1,0 +1,25 @@
+name: "Penguin"
+author: "zeski"
+category: "Crypto"
+
+description: |
+  Someone encrypted a penguin, but that did not hide it at all. I hope I did not make the same mistake.
+
+value: 500
+type: "dynamic"
+extra:
+  initial: 500
+  decay: 50
+  minimum: 50
+
+files:
+  - "chall/penguin.py"
+  - "chall/penguin.png.enc"
+flags:
+  - "DCTF{ECB_mode_was_a_mistake}"
+tags:
+  - "crypto"
+  - "medium"
+
+state: "visible"
+version: "0.1"
