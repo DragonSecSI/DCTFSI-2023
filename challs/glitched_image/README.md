@@ -1,6 +1,6 @@
 # Glitched image
 
-You are provided a viisbly corrupted image. As per the description, the idea is to think a bit outside of the box and search for the original image outside of the provided files.
+You are provided a viisbly corrupted image. As per the description (encoded in base64 to provide further hints), the idea is to think a bit outside of the box and search for the original image outside of the provided files.
 
 The solution (example provided in `sol.py`) is to:
 1. Locate and retreive the original image, found directly on the landing page of dragonsec.si
