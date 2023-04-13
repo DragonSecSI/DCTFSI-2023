@@ -15,7 +15,7 @@ extra:
 files:
   - "glitched.jpeg"
 flags:
-  - "DCTF{f1nD_7h3_d1Ff3r3NCe5}
+  - "DCTF{f1nD_7h3_d1Ff3r3NCe5}"
 tags:
   - "misc"
 
