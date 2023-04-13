@@ -1,0 +1,10 @@
+version: '3.3'
+services:
+  web:
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+      args:
+        - "FLAG1=DCTF{c4r3fu1_w1th_c0mm3nts_33e9c9d80ed}"
+    ports:
+      - "80:80"
