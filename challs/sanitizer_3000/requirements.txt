@@ -1,0 +1,11 @@
+Flask
+Flask-Limiter
+Flask-Login
+Flask-SQLAlchemy
+flask-talisman
+pyppeteer
+redis
+rq
+waitress
+selenium
+requests

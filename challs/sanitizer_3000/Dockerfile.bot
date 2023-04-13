@@ -1,0 +1,32 @@
+# FROM python:3.9-alpine
+
+# RUN apk add --update --no-cache chromium chromium-chromedriver 
+# RUN python -m pip install --upgrade pip
+# RUN pip install rq==1.10.1 selenium requests
+
+# COPY src/bot.py /app/src/bot.py
+
+# WORKDIR /app
+
+# CMD [ "rq", "worker", "--with-scheduler", "--url", "redis://redis:6379"]
+
+FROM --platform=arm64 python:3.9-alpine
+
+RUN apk add --update --no-cache chromium chromium-chromedriver 
+RUN python -m pip install --upgrade pip
+
+
+
+RUN pip install rq==1.10.1 selenium requests
+
+# create a user to run the app
+RUN adduser -D bot
+USER bot
+
+
+COPY src/bot.py /app/src/bot.py
+
+WORKDIR /app
+
+CMD [ "rq", "worker", "--with-scheduler", "--url", "redis://redis:6379"]
+

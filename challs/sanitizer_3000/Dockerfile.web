@@ -1,0 +1,26 @@
+# FROM python:3.9-slim
+
+# COPY requirements.txt /app/requirements.txt
+# WORKDIR /app
+# RUN pip install -r requirements.txt
+
+# USER root
+# COPY . /app
+# RUN chown -R 1337:1337 /app
+
+# CMD [ "waitress-serve", "--port=8000", "--call", "src:create_app"]
+FROM python:3.9-slim
+
+RUN adduser --system --group app
+
+COPY requirements.txt /app/requirements.txt
+WORKDIR /app
+RUN pip install -r requirements.txt
+
+USER app
+
+USER root
+COPY . /app
+RUN chown -R app:app /app
+USER app
+CMD [ "waitress-serve", "--call", "src:create_app"]

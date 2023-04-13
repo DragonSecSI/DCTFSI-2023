@@ -1,0 +1,23 @@
+services:
+  redis:
+    container_name: redis
+    image: "redis:6-alpine"
+
+  web:
+    container_name: web
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    environment:
+      - FLAG=DCTF{DUMMY_FLAG}
+    depends_on:
+      - redis
+    ports:
+      - "80:8080"
+
+  bot:
+    build:
+      context: .
+      dockerfile: Dockerfile.bot
+    depends_on:
+      - redis
