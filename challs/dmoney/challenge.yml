@@ -1,0 +1,28 @@
+name: "Dmoney"
+author: "AlwaysGuilty"
+category: "PWN"
+
+description: |
+  Want money?
+  Just go to the nearest ATM!
+connection_info: nc pwn.dctf.si 1337
+
+value: 500
+type: "dynamic"
+extra:
+  initial: 500
+  decay: 50
+  minimum: 50
+
+files:
+  - "chall/app"
+  - "chall/libc.so"
+  - "chall/ld.so"
+flags:
+  - "DCTF{C4l1_911_F0r_Tc4ch3_P0150n1n6}"
+tags:
+  - "pwn"
+  - "hard"
+
+state: "visible"
+version: "0.1"

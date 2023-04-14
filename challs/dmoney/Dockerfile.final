@@ -1,0 +1,26 @@
+FROM ubuntu:18.04@sha256:8da4e9509bfe5e09df6502e7a8e93c63e4d0d9dbaa9f92d7d767f96d6c20a78a
+
+RUN export DEBIAN_FRONTEND=noninteractive && \
+    apt-get -y update && \
+    apt-get -y install socat coreutils build-essential
+
+COPY chall/flag.txt /
+COPY chall/app.c /
+COPY chall/ld.so /
+COPY chall/libc.so /
+COPY chall/patchelf /
+
+RUN ln -s libc.so libc.so.6 && \
+    gcc -o app app.c && \
+    rm app.c && \
+    ./patchelf --set-interpreter ld.so app && \
+    ./patchelf --set-rpath . app
+
+RUN chmod 555 /app && \
+    chmod 444 /flag.txt
+
+EXPOSE 1338
+
+CMD socat -T 30 \
+    TCP-LISTEN:1337,nodelay,reuseaddr,fork \
+    EXEC:"stdbuf -i0 -o0 -e0 ./app"
